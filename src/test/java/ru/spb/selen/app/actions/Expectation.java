@@ -1,4 +1,4 @@
-package ru.spb.selen.app.util;
+package ru.spb.selen.app.actions;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

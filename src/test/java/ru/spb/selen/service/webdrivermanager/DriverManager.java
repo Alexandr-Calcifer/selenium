@@ -30,7 +30,7 @@ public class DriverManager {
         }
         private static ThreadLocal<RemoteWebDriver> threadLocal = new ThreadLocal<>();
 
-        protected static void setupBrowser() throws MalformedURLException {
+        public static void setupBrowser() throws MalformedURLException {
             switch (browserName) {
                 case "chrome":
                     ChromeOptions chromeOptions = new ChromeOptions();
@@ -52,7 +52,7 @@ public class DriverManager {
             threadLocal.set(new RemoteWebDriver(new URL(remote_url), browserOptions));
         }
 
-        protected void closeDriver() {
+        public static void closeDriver() {
             if (threadLocal.get() != null) {
                 tearDownDriver();
             } else {
@@ -60,11 +60,11 @@ public class DriverManager {
             }
         }
 
-        protected WebDriver getWebDriver() {
+        public static WebDriver getWebDriver() {
             return threadLocal.get();
         }
 
-        private void tearDownDriver() {
+        private static void tearDownDriver() {
             getWebDriver().quit();
         }
 }

@@ -2,11 +2,11 @@ package ru.spb.selen.app.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import ru.spb.selen.app.util.Actions;
+import ru.spb.selen.app.actions.Action;
 
 import static org.openqa.selenium.By.xpath;
 
-public class MainPage extends Actions {
+public class MainPage extends Action {
 
     private String pageUrl = "https://www.selenium.dev/selenium/web/web-form.html";
     private By textInput = xpath("//*[@id='my-text-id']");
@@ -22,7 +22,7 @@ public class MainPage extends Actions {
         return this;
     }
 
-    public MainPage inputText(String text) {
+    public MainPage inputTextInTextInputField(String text) {
         inputText(textInput, 10, text);
         return this;
     }
@@ -32,7 +32,11 @@ public class MainPage extends Actions {
         return this;
     }
 
-    public String getText(){
+    public String getTitle() {
+        return webDriver.getTitle();
+    }
+
+    public String getTextMessage(){
         return getText(message, 10);
     }
 
